@@ -7,7 +7,7 @@ import { deprecate } from '../../_helpers/custom-validations'
 import Automation from '../../_helpers/automation-attribute'
 
 const TextInput = ({ defaultValue, type, ...props }) => {
-  if (this.props.append != null) {
+  if (props.append != null) {
     if (props.masked) {
       const length = defaultValue ? defaultValue.length : 8
       const maskedValue = new Array(length).join('•')
@@ -20,7 +20,7 @@ const TextInput = ({ defaultValue, type, ...props }) => {
             readOnly
             {...Automation('text-input')}
           />
-          <InputGroup>{this.props.append}</InputGroup>
+          <InputGroup>{props.append}</InputGroup>
         </Input>
       )
     }
@@ -32,16 +32,16 @@ const TextInput = ({ defaultValue, type, ...props }) => {
           defaultValue={defaultValue}
           {...props}
         />
-        <InputGroup>{this.props.append}</InputGroup>
+        <InputGroup>{props.append}</InputGroup>
       </Input>
     )
-  } else if (this.props.prepend != null) {
+  } else if (props.prepend != null) {
     if (props.masked) {
       const length = defaultValue ? defaultValue.length : 8
       const maskedValue = new Array(length).join('•')
       return (
         <Input>
-          <InputGroup>{this.props.prepend}</InputGroup>
+          <InputGroup>{props.prepend}</InputGroup>
           <TextInput.Element
             type={type}
             {...props}
@@ -54,7 +54,7 @@ const TextInput = ({ defaultValue, type, ...props }) => {
     }
     return (
       <Input>
-        <InputGroup>{this.props.prepend}</InputGroup>
+        <InputGroup>{props.prepend}</InputGroup>
         <TextInput.Element
           {...Automation('text-input')}
           type={type}
